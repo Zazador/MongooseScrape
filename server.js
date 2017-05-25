@@ -48,7 +48,7 @@ db.once("open", function() {
 // ======
 
 // A GET request to scrape the echojs website
-app.get("/scrape", function(req, res) {
+app.get("/", function(req, res) {
   // First, we grab the body of the html with request
   request("http://www.echojs.com/", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -165,6 +165,6 @@ app.post("/delete-articles/:id", function(req, res) {
 
 
 // Listen on port 3000
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log("App running on port 3000!");
 });
